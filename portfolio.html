@@ -1,0 +1,33 @@
+---
+layout: default
+---
+<!doctype html>
+ <html>
+   <head>
+ <link rel="stylesheet" href="/assets/css/main.css"/>
+ <link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
+   </head>
+   <body>
+     <header>
+       <h1>Books</h1>
+     </header>
+     <main>
+       <ul class="covers-container">
+  {% for book in site.data.processed_books %}
+    <li class="cover-container">
+      <a href="{{ book.title | datapage_url }}">
+        <img src="/images/covers/{{book.isbn}}.jpg" class="cover" alt="Cover of ISBN {{book.isbn}} {{book.title}}"/>
+        <p>
+          <small>{{book.pub_date | date: '%b %Y'}}</small>
+          <br/>
+          <strong>{{book.title }}</strong>
+        </p>
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+     </main>
+   </body>
+ </html>
